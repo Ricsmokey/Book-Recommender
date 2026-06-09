@@ -6,7 +6,7 @@ Django web app that displays a random book — cover, rating, price, and
 description — on a clean, responsive page.
 
 ## Live demo
-https://your-app.onrender.com
+https://book-recommender-lun2.onrender.com
 
 ## Features
 - Pagination across all 50 catalogue pages
