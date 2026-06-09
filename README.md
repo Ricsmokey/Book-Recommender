@@ -16,14 +16,3 @@ with their details from its own page, and store in a SQLite database.
 
 Python  · requests · BeautifulSoup · sqlite3 · pytest
 
-## Project structure
-
-\`\`\`
-Portfolio/
-├── scraper.py          # main scraper: functions + main()
-├── test_scraper.py     # pytest tests for the parser
-├── listing_page.html   # saved HTML fixture for the tests
-├── requirements.txt
-└── README.md
-\`\`\`
-
