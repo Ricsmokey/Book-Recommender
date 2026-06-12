@@ -1,0 +1,36 @@
+{% extends "books/base.html" %}
+{% block title %}{{ category }} — Discover a Book{% endblock %}
+
+{% block extra_css %}
+<style>
+  .crumb { color: #4a6fa5; text-decoration: none; font-size: 1.05rem; font-weight: 700; }
+  .crumb:hover { text-decoration: underline; }
+  h1 { font-size: 2rem; margin: 0.6rem 0 0.3rem; }
+  .count { color: #8a8276; margin-bottom: 1.5rem; }
+  .book-list { list-style: none; padding: 0; margin: 0; }
+  .book-row { display: flex; align-items: center; gap: 1.5rem;
+              padding: 1.6rem 0; border-bottom: 1px solid #e0dccf; }
+  .book-row img { width: 100px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+  .book-title { font-weight: 700; font-size: 1.1rem; color: #2c3e50; text-decoration: none; }
+  .book-title:hover { color: #4a6fa5; }
+  .book-price { display: block; font-weight: 800; color: #2c7a4b; font-size: 0.95rem; margin-top: 0.3rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+  <a class="crumb" href="/genres/">← All genres</a>
+  <h1>{{ category }}</h1>
+  <p class="count">{{ books|length }} book{{ books|length|pluralize }}</p>
+
+  <ul class="book-list">
+    {% for book in books %}
+      <li class="book-row">
+        <img src="{{ book.image_url }}" alt="{{ book.title }}">
+        <div>
+          <a class="book-title" href="/book/{{ book.id }}/">{{ book.title }}</a>
+          <span class="book-price">{{ book.price }}</span>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

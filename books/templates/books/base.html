@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Discover a Book{% endblock %}</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
+           background:#f4f1ea; color:#2c3e50; display:flex; flex-direction:column; min-height:100vh; }
+    header.site { background:#2c3e50; padding:1rem 2rem; display:flex; flex-wrap:wrap;
+                  gap:1rem 1.5rem; align-items:center; }
+    header.site .brand { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:700; }
+    header.site nav a { color:#cfd8e3; text-decoration:none; margin-left:1rem; font-weight:600;
+                        padding-bottom:2px; border-bottom:2px solid transparent; transition:color 0.15s ease; }
+    header.site nav a:hover { color:#fff; }
+    header.site nav a.active { color:#fff; border-bottom-color:#4a6fa5; }
+    main { flex:1; width:100%; max-width:1000px; margin:0 auto; padding:2rem; }
+    footer.site { text-align:center; padding:1.5rem; color:#8a8276; font-size:0.85rem; border-top:1px solid #e0dccf; }
+    footer.site a { color:#4a6fa5; text-decoration:none; font-weight:600; }
+    footer.site a:hover { text-decoration:underline; }
+    .card { background:#fff; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.10); padding:1.5rem; }
+    .btn { display:inline-block; text-decoration:none; padding:0.6rem 1.2rem; border-radius:8px;
+           font-weight:600; font-size:0.9rem; background:#4a6fa5; color:#fff; transition:background 0.15s ease; }
+    .btn:hover { background:#3a5a85; }
+  </style>
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header class="site">
+    <a href="/" class="brand">Discover a Book</a>
+    <nav>
+      <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+      <a href="/genres/" class="{% if '/genre' in request.path %}active{% endif %}">Genres</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site">Created by <a href="https://github.com/Ricsmokey/Book-Recommender" target="_blank">RicDev☯︎</a></footer>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

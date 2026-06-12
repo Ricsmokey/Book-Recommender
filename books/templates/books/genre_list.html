@@ -1,0 +1,26 @@
+{% extends "books/base.html" %}
+{% block title %}Genres — Discover a Book{% endblock %}
+
+{% block extra_css %}
+<style>
+  h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+  .genre-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .genre-tile {
+    flex: 0 0 calc(25% - 0.75rem);
+    text-align: center; padding: 1.1rem;
+    border: 2px solid #4a6fa5; border-radius: 10px;
+    color: #4a6fa5; background: transparent; text-decoration: none; font-weight: 700;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .genre-tile:hover { background: #4a6fa5; color: #fff; }
+</style>
+{% endblock %}
+
+{% block content %}
+  <h1 style="text-align: center;">All genres</h1>
+  <div class="genre-grid">
+    {% for category in genres %}
+      <a class="genre-tile" href="/genre/{{ category }}/">{{ category }}</a>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "books/base.html" %}
+{% block title %}{{ book.title }} — Discover a Book{% endblock %}
+
+{% block extra_css %}
+<style>
+  .crumb { color: #4a6fa5; text-decoration: none; font-size: 1.05rem; font-weight: 700; }
+  .crumb:hover { text-decoration: underline; }
+  .detail { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .detail-cover img { width: 260px; border-radius: 14px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); }
+  .detail-info { flex: 1; min-width: 280px; }
+  .detail-info h1 { font-size: 2rem; margin: 0 0 0.5rem; color: #2c3e50; }
+  .detail-genre { color: #4a6fa5; text-decoration: none; font-weight: 700; }
+  .detail-genre:hover { text-decoration: underline; }
+  .stars { color: #e0a82e; font-size: 1.4rem; letter-spacing: 3px; margin: 0.8rem 0; }
+  .detail-price { font-size: 1.6rem; font-weight: 800; color: #2c7a4b; margin: 0.5rem 0; }
+  .availability { color: #2c7a4b; font-weight: 600; margin-bottom: 1.2rem; }
+  .description { line-height: 1.7; color: #4a4639; max-width: 600px; }
+  .source-link { display: inline-block; margin-top: 1.5rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+  <a class="crumb" href="/genre/{{ book.category }}/">← Back to {{ book.category }}</a>
+
+  <div class="detail">
+    <div class="detail-cover">
+      <img src="{{ book.image_url }}" alt="{{ book.title }}">
+    </div>
+    <div class="detail-info">
+      <h1>{{ book.title }}</h1>
+      <a class="detail-genre" href="/genre/{{ book.category }}/">{{ book.category }}</a>
+      <div class="stars">{{ stars }}</div>
+      <div class="detail-price">{{ book.price }}</div>
+      <p class="availability">{{ book.availability }}</p>
+      <p class="description">{{ book.description }}</p>
+      <a class="btn source-link" href="{{ book.book_url }}" target="_blank">View original listing →</a>
+    </div>
+  </div>
+{% endblock %}
