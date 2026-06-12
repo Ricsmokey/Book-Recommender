@@ -18,14 +18,10 @@ def home(request):
     })
 
 
-
-
 def genre_list(request):
     genres = (Book.objects.values_list('category', flat=True)
               .distinct().order_by('category'))     
     return render(request, 'books/genre_list.html', {'genres': genres})
-
-
 
 
 def genre_detail(request, category):
@@ -34,8 +30,6 @@ def genre_detail(request, category):
         'category': category,
         'books': books,
     })
-
-
 
 
 def book_detail(request, book_id):
