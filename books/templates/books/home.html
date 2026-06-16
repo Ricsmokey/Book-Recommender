@@ -4,17 +4,17 @@
 {% block extra_css %}
 <style>
   .intro h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
-  .intro p  { color: #6b6456; max-width: 620px; line-height: 1.6; }
-  section h2 { font-size: 1.3rem; border-bottom: 2px solid #e0dccf;
+  .intro p  { color: #6f665a; max-width: 620px; line-height: 1.6; }
+  section h2 { font-size: 1.3rem; border-bottom: 2px solid #e0d6c2;
                padding-bottom: 0.5rem; margin-top: 3rem; }
   .book-list { list-style: none; padding: 0; margin: 0; }
   .book-row { display: flex; align-items: center; gap: 1.5rem;
-              padding: 1.6rem 0; border-bottom: 1px solid #e0dccf; }
-  .book-row img { width: 120px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
-  .book-title { font-weight: 700; font-size: 1.15rem; color: #2c3e50; text-decoration: none; }
-  .book-title:hover { color: #4a6fa5; }
-  .book-meta  { display: block; color: #8a8276; font-size: 0.9rem; margin-top: 0.3rem; }
-  .book-price { display: block; font-weight: 800; color: #2c7a4b; font-size: 0.95rem; margin-top: 0.2rem; }
+              padding: 1.6rem 0; border-bottom: 1px solid #e0d6c2; }
+  .book-row img { width: 120px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+  .book-title { font-weight: 600; font-size: 1.2rem; color: #2c2722; }
+  .book-title:hover { color: #a23b2d; }
+  .book-meta  { display: block; color: #8a8175; font-size: 0.9rem; margin-top: 0.3rem; }
+  .book-price { display: block; font-weight: 800; color: #a23b2d; font-size: 0.95rem; margin-top: 0.2rem; }
 
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -23,8 +23,9 @@
 
 {% block content %}
   <section class="intro">
-    <h1>Discover a Book</h1>
-    <h3>The book you need. The insight you seek.</h3>
+    <h1>Discover a Book </h1>
+    <h3>The book you need. 
+        The insight you seek.</h3>
   </section>
 
   <section class="featured">
@@ -44,7 +45,7 @@
   </section>
 
   <section class="genres">
-    <h1 class="reveal">Top genres</h1>
+    <h2 class="reveal">Top genres</h2>
     <ul class="book-list">
       {% for g in top_genres %}
         <li class="book-row reveal">

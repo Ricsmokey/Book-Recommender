@@ -1,0 +1,43 @@
+{% extends "books/base.html" %}
+{% block title %}Search — Discover a Book{% endblock %}
+
+{% block extra_css %}
+<style>
+  h1 { font-size: 2rem; margin: 0 0 0.3rem; }
+  .summary { color: #8a8175; margin-bottom: 1.5rem; }
+  .book-list { list-style: none; padding: 0; margin: 0; }
+  .book-row { display: flex; align-items: center; gap: 1.5rem;
+              padding: 1.6rem 0; border-bottom: 1px solid #e0d6c2; }
+  .book-row img { width: 100px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+  .book-title { font-weight: 600; font-size: 1.2rem; color: #2c2722; }
+  .book-title:hover { color: #a23b2d; }
+  .book-meta { display: block; color: #8a8175; font-size: 0.9rem; margin-top: 0.3rem; }
+  .book-price { display: block; font-weight: 800; color: #a23b2d; font-size: 0.95rem; margin-top: 0.2rem; }
+  .empty { color: #6f665a; line-height: 1.6; }
+</style>
+{% endblock %}
+
+{% block content %}
+  <h1>Search</h1>
+  {% if q %}
+    <p class="summary">{{ results|length }} result{{ results|length|pluralize }} for “{{ q }}”</p>
+    {% if results %}
+      <ul class="book-list">
+        {% for book in results %}
+          <li class="book-row">
+            <img src="{{ book.image_url }}" alt="{{ book.title }}">
+            <div>
+              <a class="book-title" href="/book/{{ book.id }}/">{{ book.title }}</a>
+              <span class="book-meta">{{ book.category }}</span>
+              <span class="book-price">{{ book.price }}</span>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No books matched. Try a different title or genre.</p>
+    {% endif %}
+  {% else %}
+    <p class="empty">Type something in the search box above to find books by title or genre.</p>
+  {% endif %}
+{% endblock %}

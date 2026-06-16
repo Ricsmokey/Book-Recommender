@@ -4,26 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Discover a Book{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
-           background:#f4f1ea; color:#2c3e50; display:flex; flex-direction:column; min-height:100vh; }
-    header.site { background:#2c3e50; padding:1rem 2rem; display:flex; flex-wrap:wrap;
-                  gap:1rem 1.5rem; align-items:center; }
-    header.site .brand { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:700; }
-    header.site nav a { color:#cfd8e3; text-decoration:none; margin-left:1rem; font-weight:600;
-                        padding-bottom:2px; border-bottom:2px solid transparent; transition:color 0.15s ease; }
-    header.site nav a:hover { color:#fff; }
-    header.site nav a.active { color:#fff; border-bottom-color:#4a6fa5; }
+           background:#f5efe3; color:#2c2722; display:flex; flex-direction:column; min-height:100vh; }
+    h1, h2, .brand, .book-title { font-family:"Fraunces", Georgia, serif; }
+    header.site { background:#f5efe3; padding:1.1rem 2rem; display:flex; flex-wrap:wrap;
+                  gap:1rem 1.5rem; align-items:center; border-bottom:1px solid #e0d6c2; }
+    header.site .brand { color:#2c2722; font-size:1.6rem; font-weight:600; }
+    header.site nav a { color:#6f665a; margin-left:1rem; font-weight:600;
+                        padding-bottom:3px; border-bottom:2px solid transparent; transition:color 0.15s ease; }
+    header.site nav a:hover { color:#2c2722; }
+    header.site nav a.active { color:#a23b2d; border-bottom-color:#a23b2d; }
+    header.site .search { margin-left:auto; }
+    header.site .search input { font-family:inherit; font-size:0.9rem; padding:0.5rem 0.9rem; width:210px;
+           border:1px solid #d8cdb6; border-radius:8px; background:#fffdf8; color:#2c2722;
+           outline:none; transition:border-color 0.15s ease; }
+    header.site .search input::placeholder { color:#a59c8c; }
+    header.site .search input:focus { border-color:#a23b2d; }
     main { flex:1; width:100%; max-width:1000px; margin:0 auto; padding:2rem; }
-    footer.site { text-align:center; padding:1.5rem; color:#8a8276; font-size:0.85rem; border-top:1px solid #e0dccf; }
-    footer.site a { color:#4a6fa5; text-decoration:none; font-weight:600; }
+    footer.site { text-align:center; padding:1.5rem; color:#8a8175; font-size:0.85rem; border-top:1px solid #e0d6c2; }
+    footer.site a { color:#a23b2d; font-weight:600; }
     footer.site a:hover { text-decoration:underline; }
-    .card { background:#fff; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.10); padding:1.5rem; }
+    .card { background:#fffdf8; border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.08); padding:1.5rem; }
     .btn { display:inline-block; text-decoration:none; padding:0.6rem 1.2rem; border-radius:8px;
-           font-weight:600; font-size:0.9rem; background:#4a6fa5; color:#fff; transition:background 0.15s ease; }
-    .btn:hover { background:#3a5a85; }
+           font-weight:600; font-size:0.9rem; background:#a23b2d; color:#fff; transition:background 0.15s ease; }
+    .btn:hover { background:#86301f; }
   </style>
   {% block extra_css %}{% endblock %}
 </head>
@@ -34,11 +44,14 @@
       <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
       <a href="/genres/" class="{% if '/genre' in request.path %}active{% endif %}">Genres</a>
     </nav>
+    <form class="search" action="/search/" method="get" role="search">
+      <input type="search" name="q" placeholder="Search books…" value="{{ request.GET.q }}" aria-label="Search books">
+    </form>
   </header>
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer class="site">Created by <a href="https://github.com/Ricsmokey/Book-Recommender" target="_blank">RicDev☯︎</a></footer>
+  <footer class="site">Created by <a href="https://github.com/Ricsmokey" target="_blank">RicDev☯︎</a></footer>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

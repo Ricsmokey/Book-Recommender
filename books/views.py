@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 from .models import Book
+from django.db.models import Count, Q
 
 
 def home(request):
@@ -36,3 +37,14 @@ def book_detail(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     stars = '★' * (book.rating or 0) + '☆' * (5 - (book.rating or 0))
     return render(request, 'books/book_detail.html', {'book': book, 'stars': stars})
+
+
+def search(request):
+    q = request.GET.get("q", "").strip()
+    if q:
+        results = Book.objects.filter(
+            Q(title__icontains=q) | Q(category__icontains=q)
+        ).order_by("title")
+    else:
+        results = Book.objects.none()
+    return render(request, "books/search.html", {"q": q, "results": results})
