@@ -28,7 +28,7 @@ https://book-recommender-lun2.onrender.com
 * Render
 
 ## Project structure
-
+```
 Book-Recommender/
 │
 ├── books/
@@ -40,13 +40,15 @@ Book-Recommender/
 ├── manage.py
 ├── db.sqlite3
 └── requirements.txt
+```
 
 
 ## Run locally
 The database ships with the repo, so you can run the web app straight away:
 
-pip install -r requirements.txt
-python manage.py runserver
+* pip install -r requirements.txt
+* python manage.py runserver
+  
 ## open http://127.0.0.1:8000/
 
 
