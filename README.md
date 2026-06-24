@@ -56,6 +56,7 @@ The database ships with the repo, so you can run the web app straight away:
 
 python -m pytest
 
-## **Author**
-Akorede Kareem — github.com/Ricsmokey
+## Author
+
+**Akorede Kareem** — [github.com/Ricsmokey](https://github.com/Ricsmokey)
 
