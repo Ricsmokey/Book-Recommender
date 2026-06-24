@@ -30,15 +30,16 @@ https://book-recommender-lun2.onrender.com
 ## Project structure
 
 Book-Recommender/
-* books/         # Django app — models, views, URLs, templates
-├── bookshelf/     # Django project settings
-├── scraper.py     # Main scraper — pagination + detail page extraction
-├── test_scraper.py         # pytest unit tests for scraper logic
-├── fixture.py              # Offline HTML fixture for testing
-├── listing_page.html        # Saved HTML used by tests
-├── manage.py # Django management entry point
-├── db.sqlite3 # Pre-populated SQLite database
-└── requirements.txt # Python dependencies
+│
+├── books/
+├── bookshelf/
+├── scraper.py
+├── test_scraper.py
+├── fixture.py
+├── listing_page.html
+├── manage.py
+├── db.sqlite3
+└── requirements.txt
 
 
 ## Run locally
