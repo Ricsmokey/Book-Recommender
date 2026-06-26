@@ -17,6 +17,6 @@ def test_returns_twenty_books():
 def test_first_book_has_clean_fields():
     books = parse_listing_page(load_soup(), PAGE_URL)
     first = books[0]
-    assert first["title"]                          # title isn't empty
-    assert first["rating"] in [1, 2, 3, 4, 5]      # rating converted to an int
+    assert first["title"]                          
+    assert first["rating"] in [1, 2, 3, 4, 5]      
     assert first["book_url"].startswith("https://books.toscrape.com/catalogue/")
